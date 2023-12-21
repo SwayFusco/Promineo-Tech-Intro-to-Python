@@ -54,8 +54,7 @@ print(ex_7_variable[4:])
 # and prints a slice of string assigned to the variable,
 # from the 2nd to the 5th character in reverse order.
 ex_8_variable = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-# print(ex_8_variable[-22:-4])
-print(ex_8_variable[-25:-21])
+print(ex_8_variable[4:0:-1])
 
 # Exercise 9 : Write a program that declares a variable and
 # prints a slice of the string assigned to the variable, ever
