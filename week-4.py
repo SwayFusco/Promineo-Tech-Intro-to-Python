@@ -128,8 +128,10 @@ print(type(file)) # <class '_io.TextIOWrapper'>
 # 5.4 Write a FOR loop to iterate over the Text IO object referenced
 # by the file variable and print each iteration of the text. How many
 # results did you get back? #HINT shouldn't be a very large number ;)
+loop_count = 0
 for line in file:
-    print(line.strip())
+    loop_count += 1
+print(f"{loop_count} loop(s) counted")
 
 # 5.5 What is the datatype of the object returned in the iteration?
 print(type(line)) # <class 'str'>
