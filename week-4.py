@@ -1,20 +1,18 @@
 """
 Author:  Sway (bryant) Fusco
 Project: Week 4 Technical Assignment
-Version: 20231231-115339
+Version: 20240114-171342
 Cohort:  2023-11-30-de-eastern
 Teacher: Tiago Basil
 School:  Promineo Tech/ACC Data Engineering
 """
-import json
-
 # Part 1: Lists
 # 1.1 Create a list called shopping_list that contains
 # at least 5 items you need to buy at the grocery store
 shopping_list = ['Potatoes', 'Steak', 'Broccoli', 'Wine', 'Coffee']
 
 # 1.2 Print out the third item in shopping_list
-print(shopping_list[2])
+print('1.2:', shopping_list[2])
 
 # 1.3 Add two more items to the end of shopping_list
 shopping_list.extend(['Cheese Cake', 'Ice Cream'])
@@ -23,7 +21,7 @@ shopping_list.extend(['Cheese Cake', 'Ice Cream'])
 del shopping_list[0]
 
 # 1.5 Print out the final version of shopping_list
-print(shopping_list)
+print('1.5:', shopping_list)
 
 # Part 2: Dictionaries
 # 2.1 Create a dictionary called my_info that contains
@@ -31,7 +29,7 @@ print(shopping_list)
 my_info = {'name': 'Sway Fusco', 'age': 47, 'favorite_hobby': 'Fencing'}
 
 # 2.2 Print out your name from the my_info dictionary
-print(my_info['name'])
+print('2.2:', my_info['name'])
 
 # 2.3 Update the value of your favorite hobby in the
 # my_info dictionary
@@ -42,7 +40,7 @@ my_info['favorite_hobby'] = 'Playing Ukulele'
 my_info['favorite_food'] = shopping_list[0]
 
 # 2.5 Print out the final version of the my_info dictionary
-print(my_info)
+print('2.5:', my_info)
 
 # Part 3: Loops
 # 3.1 Create a list called numbers that contains the numbers
@@ -52,13 +50,13 @@ numbers = list(range(1, 11))
 # 3.2 using a for loop, print out each number in the numbers
 # list
 for this_number in numbers:
-    print(this_number)
+    print('3.2:', this_number)
 
 # 3.3 using a while loop print out each number in the
 # numbers list
 index = 0
 while index < len(numbers):
-    print(numbers[index])
+    print('3.3:', numbers[index])
     index += 1
 
 # 3.4 Create a dictionary called squares that contains the
@@ -71,7 +69,7 @@ for key in range(1, 6):
 # 3.5 Using a for loop, print out each key-value pair in
 # the squares dictionary
 for key in squares:
-    print(f'{key}: {squares[key]}')
+    print(f'3.5: {key}: {squares[key]}')
 
 # Part 4: Conditional Logic
 # 4.1 Create a variable called temperature and set it to
@@ -86,9 +84,9 @@ temperature = 2  # current temperature in Loveland, CO @ Now
 # If the temperature is 10 degrees Celsius or above, print out a
 # message telling the user that they do not need to wear a coat.
 if temperature < 10:
-    print(f"Wear a coat —it's {temperature}° Celsius outside")
+    print(f"4.2: Wear a coat —it's {temperature}° Celsius outside")
 else:
-    print(f"You do not need to wear a coat —it's {temperature}° Celsius outside")
+    print(f"4.2: No coat needed! —it's {temperature}° Celsius outside")
 
 # 4.3 Create a variable called username and set it to a string
 # representing the user's username
@@ -101,9 +99,9 @@ username = 'MyUsernameisTooLong'
 # characters or less, print out a message telling the user that
 # their username is okay.
 if len(username) > 10:
-    print(f'{username} is {len(username) - 11} characters too long (max 10)')
+    print(f'4.4: {username} is {len(username)-11} too long (max 10 chars')
 else:
-    print(f'The username: {username} is ok to use')
+    print(f'4.4: The username: {username} is ok to use')
 
 # 4.5 Create a list called numbers_2 that contains the
 # numbers 1 through 5.
@@ -112,41 +110,35 @@ numbers_2 = list(range(1, 6))
 # 4.6 Using a for loop and an if statement, print out only the
 # even numbers in the numbers_2 list.
 for index in range(1, len(numbers_2), 2):
-    print(numbers_2[index])
+    print('4.6:', numbers_2[index])
 
 # Part 5: Data Wrangling
 # 5.1 Read the 'new_families.txt' file (included in your materials)
 # into memory and assign the variable, “file” to the object.
 file = open('new_families.txt', 'r')  # for reading
 
-# 5.2 Print(file) # Can you read the data in the file?
-print(file)  # No, you can't
+# 5.2 Print(file) Can you read the data in the file?
+print('5.2:', file)  # No, you can't
 
 # 5.3 What is the datatype of the file variable?
-print(type(file)) # <class '_io.TextIOWrapper'>
+print('5.3:', type(file)) # <class '_io.TextIOWrapper'>
 
 # 5.4 Write a FOR loop to iterate over the Text IO object referenced
 # by the file variable and print each iteration of the text. How many
 # results did you get back? #HINT shouldn't be a very large number ;)
-loop_count = 0
+i = 1
 for line in file:
-    loop_count += 1
-print(f"{loop_count} loop(s) counted")
+    i += 1
+print('5.4:', i, 'results counted')
 
 # 5.5 What is the datatype of the object returned in the iteration?
-print(type(line)) # <class 'str'>
+print('5.5:', type(line)) # <class 'str'>
 
 # 5.6 What happens when you try to parse the first item in the list?
-# first_family = json.loads(families_list[0]) # errors: needs string not dict
-try:
-    json.loads(line)
-except:
-    print('Error! json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes')
+print('5.6:', line[0])
 
 # 5.7 Change the string variable into a list of dictionaries type
-# so you can work with it. #HINT: import json
-family_list = json.loads(line.replace("'",'"'))
+family_list = list(eval(line))
 
 # 5.8 Now that you have a list, print only the second item from the
-# list. What is its type?
-print(f"{family_list[1]} (type:{type(family_list[1])})")
+print('5.8:', family_list[1])
