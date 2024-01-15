@@ -6,8 +6,6 @@ Cohort:  2023-11-30-de-eastern
 Teacher: Tiago Basil
 School:  Promineo Tech/ACC Data Engineering
 """
-import json
-
 # Part 1: Lists
 # 1.1 Create a list called shopping_list that contains
 # at least 5 items you need to buy at the grocery store
