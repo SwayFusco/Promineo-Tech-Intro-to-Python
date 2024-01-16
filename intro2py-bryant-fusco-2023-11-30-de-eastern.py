@@ -5,21 +5,30 @@
 
 # 1: Write the following list
 lst1 = ['1', '2', [3]]
-
 print('1: lst1 =', lst1)
 
 # 2: Write the following list
 lst2 = [('3', 4), '5', 6]
-
 print('2: lst2 =', lst2)
 
 # 3: Join lst1 and lst2 so only unique string or integer values remain in a
 # new list, lst3.(i.e., ['1', '2', 3, '3', 4, 5, 6])
-lst3 = lst1[0:2] + lst1[2:][0] + list(lst2[0]) + lst2[1:]
+# slicing method:
+# lst3 = lst1[0:2] + lst1[2:][0] + list(lst2[0]) + lst2[1:]
+# recursive method:
+def strip(lst):
+    result = []
+    for i in lst:
+        if isinstance(i, list) or isinstance(i, tuple):
+            result.extend(strip(i))
+        else:
+            result.append(i)
+    return result
+
+lst3 = strip([lst1, lst2])
 
 print('3: lst3 =', lst3)
 
-# 4: Create an empty dictionary called odds_evens.
 # Next, iterate through lst3. If a number (regardless of datatype) is even,
 # add the value to a list that will be stored as a value for the key `even`
 # in the dictionary, odds_evens. Do the same for the odds numbers. When you
@@ -43,37 +52,29 @@ print('5: numbers =', numbers)
 # number, if it's a string, convert it to an int, otherwise ignore.
 for key, values in odds_even.items():
     for i in range(len(values)):
-        # Check if the element is a string and convert it to an integer
         if isinstance(values[i], str):
             values[i] = int(values[i])
 
 print('6: odds_even = ', odds_even)
 
+# odds_evens = {key: [int(i) if type(i) is not int else i for i in value] for (key, value) in odds_evens.items()}
+
 # 7: Find the maximum number in the numbers list. Then, for each item in the
 # lists of the odds_evens dictionary, add this maximum number to the item and
 # append the result to the numbers list. Try this using dictionary
 # comprehension!
-numbers.append(max(numbers))
+most = max(numbers)
+for v in odds_even.values():
+    numbers.extend([i+most for i in v])
+numbers = list(set(numbers))
+
 print('7: numbers =', numbers)
-# 8: Take the code you wrote to process #1 – 7 and add error handling with TRY-EXCEPT-FINALLY blocks. Print out any errors to the console. Print the numbers list to the console which should look like this: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-# 9: Save your script. Run your script. Submit both the script and a screen shot of your IDE showing the resulting output from running your script.
+# 8: Take the code you wrote to process #1 – 7 and add error handling with
+# TRY-EXCEPT-FINALLY blocks. Print out any errors to the console. Print the
+# numbers list to the console which should look like this:
+# [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+print('8: numbers =', numbers)
 
-# flat_list = []
-# for i in lst1+lst2:
-#     if isinstance(i, tuple) or isinstance(i, list):
-#         for x in i:
-#             flat_list.append(x)
-#     else:
-#         flat_list.append(i)
-
-# ['1', '2', 3, '3', 4, '5', 6]
-# print(flat_list)
-
-# flat_2 = [i for i in [x for x in lst1+lst2 if not isinstance(x, tuple) and not isinstance(x, list)]]
-# print(flat_2)
-
-# flat_list = [i for i in lst1 + lst2 if type(i) is not tuple and type(i) is not list]
-# flat_list = flat_list + [i for i in lst1 + lst2 if type(i) is list]
-# flat_list = flat_list + [i for i in lst1 + lst2 if type(i) is list]
-# print(set(flatten_list(lst1) + flatten_list(lst2)))
+# 9: Save your script. Run your script. Submit both the script and a screen
+# shot of your IDE showing the resulting output from running your script.
